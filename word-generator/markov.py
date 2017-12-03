@@ -1,12 +1,13 @@
 from markovify import Chain
 
+from word_generator import WordGenerator
 
-def build_chain(corpus_file='corpus.txt', state_size=2):
-    with open(corpus_file) as f:
-        corpus_raw = f.read()
-    corpus_list = [list(word) for word in corpus_raw.split()]
-    return Chain(corpus_list, state_size)
 
-def generate_word():
-    mc = build_chain()
-    return ''.join(mc.walk())
+class Markov(WordGenerator):
+
+    def __init__(self, state_size=2):
+        corpus_lists = [list(word) for word in self._get_corpus()]
+        self.chain = Chain(corpus_lists, state_size)
+
+    def generate_word(self):
+        return ''.join(self.chain.walk())
