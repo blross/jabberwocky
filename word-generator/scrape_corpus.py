@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 
+
 url_string = ('https://raw.githubusercontent.com/jonbcard/'
               'scrabble-bot/master/src/dictionary.txt')
 
